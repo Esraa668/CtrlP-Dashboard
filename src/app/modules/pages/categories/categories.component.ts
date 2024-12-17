@@ -14,7 +14,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { SearchComponent } from '../../../share/componrnts/search/search.component';
-import { CategoryService } from '../../../core/services/category.service';
 @Component({
   selector: 'app-categories',
   standalone: true,
@@ -39,12 +38,12 @@ export class CategoriesComponent implements OnInit {
   Categories: Categories[] = [];
   constructor(private router: Router) {}
   statuses!: SelectItem[];
-  CategoryService = inject(CategoryService);
+  ProductService = inject(ProductService);
 
   ngOnInit(): void {
-    this.CategoryService.getCategories().subscribe({
-      next: (data) => {
-        this.Categories = data;
+    this.ProductService.getcategories().subscribe({
+      next: (value) => {
+        this.Categories = value.data;
       },
     });
   }

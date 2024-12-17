@@ -46,7 +46,7 @@ export class MassageComponent implements OnInit {
 
   selectedCities!: any[];
   ngOnInit(): void {
-    this.ProductService.getCategories().subscribe({
+    this.ProductService.getcategories().subscribe({
       next: (value) => {
         this.Categories = value.data;
       },

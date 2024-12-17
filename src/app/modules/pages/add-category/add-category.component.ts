@@ -1,5 +1,4 @@
-import { CategoryService } from './../../../core/services/category.service';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -10,13 +9,13 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
   styleUrl: './add-category.component.scss',
 })
 export class AddCategoryComponent {
-  CategoryService = inject(CategoryService);
   addForm: FormGroup = new FormGroup({
-    Id: new FormControl(''),
-    Name: new FormControl(''),
-    Image: new FormControl(''),
+    id: new FormControl(''),
+    name: new FormControl(''),
   });
 
   cat = this.addForm.value;
-  handle(): void {}
+  handle(): void {
+    console.log(this.cat);
+  }
 }

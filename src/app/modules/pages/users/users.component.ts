@@ -30,26 +30,19 @@ import { SearchComponent } from '../../../share/componrnts/search/search.compone
     SearchComponent,
   ],
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'], // Fixed the typo here
+  styleUrl: './users.component.scss',
 })
 export class UsersComponent implements OnInit {
-  users: Users[] = []; // Holds the user data fetched from the service
+  users: Users[] = [];
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.usersService.GetUSer().subscribe({
-      next: (data: Users[]) => {
-        this.users = data; // Assign fetched data to the users array
-      },
-      error: (err) => {
-        console.error('Error fetching users:', err); // Handle any errors
-      },
-    });
+    this.users = this.usersService.getUsers();
   }
 
   lockUser(user: Users): void {
-    alert(`Locking user: ${user.userName}`);
-    user.isLockedOut = !user.isLockedOut; // Toggle lock status for the clicked user
+    alert(`Locking user: ${user.name}`);
+    user.lock = !user.lock; // Toggle lock status for the clicked user
   }
 }

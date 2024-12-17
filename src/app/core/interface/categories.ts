@@ -1,5 +1,6 @@
 export interface Categories {
-  id: number;
+  _id?: string;
   name: string;
-  imageUrl: string;
+  slug?: string;
+  image: string;
 }
